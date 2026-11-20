@@ -1,0 +1,924 @@
+/* ==========================================================================
+   1. Fuentes y variables
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #10111b;
+  --panel: #191a28;
+  --panel2: #202133;
+  --text: #f5f5fb;
+  --muted: #a0a2b8;
+  --line: #2b2d42;
+  --purple: #a78bfa;
+  --purple2: #7c5ce7;
+  --green: #5ee0ae;
+  --orange: #ffbd75;
+  --red: #ff7e8d;
+}
+
+
+/* ==========================================================================
+   2. Reset y base
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(ellipse at 70% -20%, #292144 0, transparent 38%), var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.accent {
+  color: var(--purple);
+}
+
+
+/* ==========================================================================
+   3. Cabecera (topbar, marca y navegación)
+   ========================================================================== */
+
+.topbar {
+  height: 82px;
+  padding: 0 max(5vw, 24px);
+  border-bottom: 1px solid #ffffff0d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #10111bd9;
+  backdrop-filter: blur(12px);
+}
+
+/* Marca */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font: 700 21px 'Space Grotesk', sans-serif;
+  letter-spacing: -.8px;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #b69cff, #7550dc);
+  color: #171321;
+  font-size: 23px;
+}
+
+.brand small {
+  display: block;
+  font: 600 9px 'DM Sans', sans-serif;
+  letter-spacing: 1.5px;
+  color: #85869e;
+  margin-top: 3px;
+}
+
+/* Navegación */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+nav a:hover,
+.back-link:hover {
+  color: var(--text);
+}
+
+.nav-cta {
+  background: #a78bfa1a;
+  border: 1px solid #a78bfa45;
+  padding: 10px 15px;
+  border-radius: 10px;
+  color: #d8ccff;
+}
+
+
+/* ==========================================================================
+   4. Layout (contenedor)
+   ========================================================================== */
+
+.container {
+  width: min(1180px, 90%);
+  margin: 0 auto;
+}
+
+
+/* ==========================================================================
+   5. Hero
+   ========================================================================== */
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 330px;
+  padding: 44px 0 30px;
+  overflow: hidden;
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 2.4px;
+  font-weight: 700;
+  color: var(--purple);
+  margin: 0 0 12px;
+}
+
+.hero h1,
+.form-heading h1 {
+  font: 700 clamp(32px, 4vw, 48px)/1.13 'Space Grotesk', sans-serif;
+  letter-spacing: -1.7px;
+  margin: 0;
+}
+
+.hero-copy {
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 17px 0 24px;
+  font-size: 14px;
+}
+
+/* Ilustración decorativa */
+.hero-art {
+  width: 300px;
+  height: 240px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.orbit {
+  position: absolute;
+  border: 1px solid #a78bfa30;
+  border-radius: 50%;
+  transform: rotate(-22deg);
+}
+
+.orbit-one {
+  width: 285px;
+  height: 130px;
+}
+
+.orbit-two {
+  width: 230px;
+  height: 195px;
+  transform: rotate(45deg);
+}
+
+.controller {
+  font-size: 115px;
+  color: #b9a2ff;
+  text-shadow: 0 0 50px #946aff80;
+  transform: rotate(-12deg);
+}
+
+.spark {
+  position: absolute;
+  color: #d8ccff;
+  font-size: 26px;
+}
+
+.spark-one {
+  top: 35px;
+  right: 42px;
+}
+
+.spark-two {
+  bottom: 35px;
+  left: 28px;
+}
+
+
+/* ==========================================================================
+   6. Botones
+   ========================================================================== */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 11px 16px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: transform .15s, background .15s;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.primary {
+  background: linear-gradient(135deg, #b6a0ff, #8c6af0);
+  color: #171321;
+  box-shadow: 0 7px 22px #8b6bea25;
+}
+
+.secondary {
+  background: #ffffff07;
+  border-color: var(--line);
+  color: #e2e2ee;
+}
+
+.secondary:hover {
+  background: #ffffff0d;
+}
+
+.danger {
+  background: #ff7e8d12;
+  border-color: #ff7e8d35;
+  color: #ff9ca8;
+}
+
+.small {
+  font-size: 11px;
+  padding: 8px 11px;
+  border-radius: 8px;
+}
+
+
+/* ==========================================================================
+   7. Estadísticas
+   ========================================================================== */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin: 13px 0 44px;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  background: linear-gradient(135deg, #1c1d2c, #171824);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+.stat-card p {
+  margin: 0 0 5px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.stat-card strong {
+  font: 700 25px 'Space Grotesk', sans-serif;
+}
+
+.stat-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: #a78bfa20;
+  color: var(--purple);
+  font-size: 22px;
+}
+
+.stat-icon.purple {
+  color: #c2a7ff;
+}
+
+.stat-icon.green {
+  background: #5ee0ae18;
+  color: var(--green);
+}
+
+.stat-icon.orange {
+  background: #ffbd7518;
+  color: var(--orange);
+}
+
+
+/* ==========================================================================
+   8. Biblioteca: cabecera, filtros y rejilla
+   ========================================================================== */
+
+/* Cabecera de la biblioteca */
+.library-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 17px;
+}
+
+.library-heading h2 {
+  font: 600 25px 'Space Grotesk', sans-serif;
+  letter-spacing: -.6px;
+  margin: 0;
+}
+
+.count {
+  font: 600 12px 'DM Sans', sans-serif;
+  color: var(--muted);
+  background: #ffffff0b;
+  border: 1px solid var(--line);
+  padding: 4px 8px;
+  border-radius: 7px;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+/* Filtros y buscador */
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 22px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.searchbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 180px;
+  background: #171824;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0 12px;
+  color: var(--muted);
+}
+
+.searchbox span {
+  font-size: 23px;
+}
+
+.searchbox input {
+  border: 0 !important;
+  background: transparent !important;
+  padding-left: 0 !important;
+}
+
+.filters select,
+.field select,
+.field input,
+.field textarea,
+.searchbox input {
+  background: #171824;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--text);
+  padding: 11px 12px;
+  outline: none;
+}
+
+.filters select {
+  font-size: 12px;
+  max-width: 205px;
+}
+
+.filters input {
+  width: 100%;
+  min-width: 0;
+}
+
+.filters input:focus,
+.field input:focus,
+.field select:focus,
+.field textarea:focus,
+.filters select:focus {
+  border-color: #a78bfa80;
+}
+
+.clear-filter {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Rejilla de juegos */
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 55px;
+}
+
+/* El estado vacío ocupa todas las columnas de la cuadrícula */
+.game-grid .empty-state {
+  grid-column: 1/-1;
+  margin: 0;
+}
+
+
+/* ==========================================================================
+   9. Tarjetas de juego (portada, etiquetas, información)
+   ========================================================================== */
+
+.game-card {
+  border: 1px solid var(--line);
+  background: linear-gradient(160deg, #1b1c2a, #171823);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform .2s, border-color .2s;
+}
+
+.game-card:hover {
+  transform: translateY(-3px);
+  border-color: #a78bfa50;
+}
+
+/* Portada */
+.cover {
+  height: 160px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 25% 20%, #5d3b91, #25203f 48%, #171824 100%);
+}
+
+.cover:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, #ffffff0d, transparent 50%),
+    repeating-linear-gradient(135deg, transparent 0 22px, #ffffff04 23px 24px);
+}
+
+.cover.has-image {
+  background-size: cover;
+  background-position: center;
+}
+
+/* Portada con imagen (etiqueta img): ocupa toda la tarjeta y se oscurece hacia abajo */
+.cover-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cover.has-image:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, #11121c);
+}
+
+.cover-symbol {
+  font: 700 70px 'Space Grotesk', sans-serif;
+  color: #ffffffbb;
+  text-shadow: 0 5px 30px #0008;
+}
+
+.cover-word {
+  position: absolute;
+  bottom: 15px;
+  left: 17px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ffffff9c;
+}
+
+/* Etiquetas sobre la portada: plataforma y estado */
+.platform-tag,
+.status {
+  position: absolute;
+  top: 12px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  font-size: 9px;
+  font-weight: 700;
+  backdrop-filter: blur(10px);
+  z-index: 1;
+}
+
+.platform-tag {
+  left: 12px;
+  background: #11121bc9;
+  color: #e3ddff;
+  border: 1px solid #ffffff1a;
+}
+
+.status {
+  right: 12px;
+}
+
+.status-pendiente {
+  background: #ffbd7526;
+  color: #ffd09c;
+}
+
+.status-jugando {
+  background: #a78bfa30;
+  color: #d7c8ff;
+}
+
+.status-completado {
+  background: #5ee0ae24;
+  color: #8df0c8;
+}
+
+/* Información del juego */
+.game-info {
+  padding: 15px;
+}
+
+.game-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 8px;
+}
+
+.game-title-row h3 {
+  font: 600 16px 'Space Grotesk', sans-serif;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.rating {
+  white-space: nowrap;
+  color: #ffce7b;
+  font-size: 11px;
+}
+
+.genre {
+  color: var(--muted);
+  font-size: 11px;
+  margin: 8px 0;
+}
+
+.description {
+  color: #c3c4d3;
+  font-size: 12px;
+  line-height: 1.55;
+  min-height: 18px;
+}
+
+/* Acciones de la tarjeta */
+.card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+  padding-top: 13px;
+  border-top: 1px solid #ffffff0c;
+}
+
+.card-actions form {
+  margin: 0;
+}
+
+
+/* ==========================================================================
+   10. Estado vacío
+   ========================================================================== */
+
+.empty-state {
+  text-align: center;
+  padding: 65px 20px 80px;
+  border: 1px dashed #41415a;
+  border-radius: 16px;
+  background: #ffffff03;
+  margin: 20px 0 50px;
+}
+
+.empty-icon {
+  font: 600 48px 'Space Grotesk', sans-serif;
+  color: var(--purple);
+  margin-bottom: 15px;
+}
+
+.empty-state h3,
+.empty-state h1 {
+  font: 600 23px 'Space Grotesk', sans-serif;
+  margin: 0 0 10px;
+}
+
+.empty-state p {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0 auto 22px;
+  max-width: 440px;
+  line-height: 1.6;
+}
+
+
+/* ==========================================================================
+   11. Formulario
+   ========================================================================== */
+
+.form-page {
+  max-width: 760px;
+  margin: 35px auto 70px;
+}
+
+.back-link {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.form-heading {
+  margin: 28px 0 25px;
+}
+
+.form-heading p:last-child {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.game-form {
+  padding: 25px;
+  background: linear-gradient(150deg, #1c1d2c, #171823);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Campos */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field.full {
+  grid-column: 1/-1;
+}
+
+.field label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #e3e3ef;
+}
+
+.optional,
+.field small {
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  font-size: 13px;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #676981;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+
+/* ==========================================================================
+   12. Mensajes flash
+   ========================================================================== */
+
+.flash-stack {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.flash {
+  padding: 12px 15px;
+  border-radius: 9px;
+  font-size: 12px;
+  border: 1px solid;
+}
+
+.flash.success {
+  background: #5ee0ae12;
+  border-color: #5ee0ae35;
+  color: #8df0c8;
+}
+
+.flash.error {
+  background: #ff7e8d12;
+  border-color: #ff7e8d35;
+  color: #ffadb6;
+}
+
+
+/* ==========================================================================
+   13. Pie de página
+   ========================================================================== */
+
+footer {
+  text-align: center;
+  padding: 25px 10px;
+  color: #65677f;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  border-top: 1px solid #ffffff0a;
+}
+
+footer span {
+  color: var(--purple);
+  padding: 0 5px;
+}
+
+
+/* ==========================================================================
+   14. Responsive
+   ========================================================================== */
+
+/* Tablet: hasta 850px */
+@media (max-width: 850px) {
+  .game-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-art {
+    width: 220px;
+    transform: scale(.85);
+    margin-right: -15px;
+  }
+
+  .filters select {
+    flex: 1;
+  }
+
+  .filters .button {
+    flex: 0 0 auto;
+  }
+}
+
+/* Móvil: hasta 600px */
+@media (max-width: 600px) {
+  /* Cabecera */
+  .topbar {
+    height: 70px;
+    padding: 0 5%;
+  }
+
+  .brand {
+    font-size: 18px;
+  }
+
+  .brand-icon {
+    width: 33px;
+    height: 33px;
+  }
+
+  nav {
+    gap: 12px;
+    font-size: 12px;
+  }
+
+  nav > a:first-child {
+    display: none;
+  }
+
+  .nav-cta {
+    padding: 9px 10px;
+  }
+
+  /* Layout y hero */
+  .container {
+    width: 90%;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 42px 0 30px;
+  }
+
+  .hero-art {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  /* Estadísticas */
+  .stats {
+    gap: 9px;
+    margin-bottom: 35px;
+  }
+
+  .stat-card {
+    padding: 13px 10px;
+    gap: 9px;
+  }
+
+  .stat-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+  }
+
+  .stat-card p {
+    font-size: 10px;
+  }
+
+  .stat-card strong {
+    font-size: 22px;
+  }
+
+  /* Rejilla y tarjetas */
+  .game-grid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .cover {
+    height: 180px;
+  }
+
+  /* Filtros */
+  .filters {
+    gap: 8px;
+  }
+
+  .searchbox {
+    flex-basis: 100%;
+  }
+
+  .filters select {
+    max-width: none;
+    min-width: 0;
+  }
+
+  .filters .button {
+    padding: 11px;
+  }
+
+  /* Formulario */
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 17px;
+  }
+
+  .field.full {
+    grid-column: auto;
+  }
+
+  .game-form {
+    padding: 17px;
+  }
+
+  .form-heading h1 {
+    font-size: 35px;
+  }
+
+  .form-actions .button {
+    flex: 1;
+  }
+}
